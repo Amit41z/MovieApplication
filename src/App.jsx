@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import { Footer, Navbar } from "./components";
+import {
+  Home,
+  People,
+  Search,
+  PeopleDetails,
+  MovieDetails,
+  TvDetails,
+  Favorite,
+} from "./pages";
+import { NowPlaying, Popular, TopRated, Upcoming } from "./pages/Movie";
+import { AiringToday, OnAir, PopularTv, TopTv } from "./pages/Tv";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+import "./App.css";
 
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <section className="w-full mx-auto overflow-hidden bg-black">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/nowplaying" element={<NowPlaying />} />
+          <Route path="/movie/popular" element={<Popular />} />
+          <Route path="/movie/top-rated" element={<TopRated />} />
+          <Route path="/movie/upcoming" element={<Upcoming />} />
+          <Route path="/tv/airing" element={<AiringToday />} />
+          <Route path="/tv/on-air" element={<OnAir />} />
+          <Route path="/tv/popular-tv" element={<PopularTv />} />
+          <Route path="/tv/top-tv" element={<TopTv />} />
+          <Route path="/movie/:movie_id" element={<MovieDetails />} />
+          <Route path="/tv/:tv_id" element={<TvDetails />} />
+          <Route path="/search/:query" element={<Search />} />
+          <Route path="/person/popular" element={<People />} />
+          <Route path="/person/:person_id" element={<PeopleDetails />} />
+          <Route path="/favorite" element={<Favorite />} />
+        </Routes>
+        <Footer />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+      </section>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

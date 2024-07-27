@@ -1,42 +1,100 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  background-color: black;
+  color: white;
+  font-family: "Source Sans 3", sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.lower-layer {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 79.17%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.upper-layer {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 79.17%);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.lazy-load-image-background {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: translateX(100%);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.animate-slide {
+  animation: slide 1.5s infinite linear;
+}
+
+.slide-bottom {
+  -webkit-animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
-.card {
-  padding: 2em;
+::-webkit-scrollbar {
+  width: 0.1rem;
+  height: 0.1rem;
 }
 
-.read-the-docs {
-  color: #888;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0.15rem;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  background: transparent;
+}
+
+
+/* button #d9008d  */
+/* skeleton #262728 */
